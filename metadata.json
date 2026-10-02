@@ -1,0 +1,8 @@
+{
+  "name": "Soi Trang Shopee",
+  "description": "Checklist và công cụ soi trang sản phẩm, trang shop Shopee theo quy định và tối ưu hiển thị của Digital Lab.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
