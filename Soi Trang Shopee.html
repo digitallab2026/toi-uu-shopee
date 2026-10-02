@@ -1,0 +1,625 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Soi Trang Shopee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: phone mockup on the left (the thing students already know), knowledge panel on the right; bottom sheet on phones. Single light theme by choice (white, as the course materials). */
+:root{
+  --bg:#FFFFFF; --surface:#FAF6F4; --surface-2:#F3EDEA; --line:#EBE2DE; --ink:#24191B; --muted:#76696B;
+  --accent:#EE4D2D; --accent-ink:#C2381C; --accent-soft:#FFEFE9;
+  --rule:#B42318; --rule-soft:#FDEDEB; --tip:#137A4C; --tip-soft:#E6F4EC; --ex:#2453A0; --ex-soft:#EAF0FA;
+  --gold:#B7791F; --gold-soft:#FFF6E0; --frame:#1E1718;
+  --f:'Montserrat',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg);color:var(--ink)}
+body{font-family:var(--f);font-size:15px;line-height:1.55}
+button,input,textarea{font-family:inherit;color:inherit}
+.app{max-width:1200px;margin:0 auto;padding:20px 16px 48px}
+/* header */
+.top{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:flex-end;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.brand{min-width:0}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+h1{font-size:clamp(26px,4vw,36px);font-weight:800;letter-spacing:-.02em;margin:2px 0 4px;line-height:1.1;text-wrap:balance}
+.sub{color:var(--muted);margin:0;max-width:60ch;font-size:14px}
+.controls{display:flex;flex-wrap:wrap;gap:10px 14px}
+.seg{display:inline-flex;background:var(--surface-2);border-radius:999px;padding:4px;gap:2px}
+.seg button{border:0;background:transparent;padding:8px 14px;border-radius:999px;font-weight:600;font-size:13px;cursor:pointer;color:var(--muted);white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--bg);color:var(--ink);box-shadow:0 1px 3px rgba(36,25,27,.14)}
+.seg button:focus-visible,.btn:focus-visible,.dot:focus-visible{outline:2px solid var(--ex);outline-offset:2px}
+.modebar{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:16px 0 22px;font-size:14px;color:var(--muted)}
+.modebar b{color:var(--ink)}
+.stat{display:inline-flex;gap:6px;align-items:center;padding:4px 10px;background:var(--surface);border-radius:8px;font-variant-numeric:tabular-nums;font-size:13px}
+/* main grid */
+.main{display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
+@media(min-width:900px){.main{grid-template-columns:400px minmax(0,1fr);align-items:start}.phonewrap{position:sticky;top:16px}}
+/* phone */
+.phone{width:100%;max-width:390px;margin:0 auto;border:10px solid var(--frame);border-radius:38px;background:var(--frame);box-shadow:0 18px 40px -18px rgba(36,25,27,.45)}
+.screen{background:#F5F5F5;border-radius:28px;height:min(740px,calc(100vh - 80px));min-height:520px;overflow-y:auto;overflow-x:hidden;position:relative;color:#222;font-size:13px;scrollbar-width:thin}
+.statusbar{display:flex;justify-content:space-between;padding:10px 20px 4px;font-size:11px;font-weight:700;background:#fff}
+.appbar{display:flex;align-items:center;gap:10px;padding:6px 12px 8px;background:#fff}
+.appbar .search{flex:1;height:30px;border:1.5px solid var(--accent);border-radius:4px;font-size:11px;color:#999;display:flex;align-items:center;padding:0 8px}
+.ic{width:20px;height:20px;flex:none}
+.card{background:#fff;margin-top:8px;padding:12px}
+.card:first-child{margin-top:0}
+/* hotspots */
+.hs{position:relative;cursor:pointer;border-radius:6px;outline:2px dashed transparent;outline-offset:-2px;transition:outline-color .2s,background .2s}
+.hs:hover{outline-color:rgba(238,77,45,.45)}
+.hs.on{outline:2px solid var(--accent);background:rgba(238,77,45,.05)}
+.dot{position:absolute;top:6px;right:6px;z-index:5;min-width:26px;height:26px;padding:0 6px;border-radius:13px;border:2px solid #fff;background:var(--accent);color:#fff;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.25);font-variant-numeric:tabular-nums}
+.dot::after{content:"";position:absolute;inset:-6px;border-radius:20px;border:2px solid var(--accent);opacity:0;animation:pulse 2s infinite}
+@keyframes pulse{0%{transform:scale(.8);opacity:.7}100%{transform:scale(1.35);opacity:0}}
+@media (prefers-reduced-motion:reduce){.dot::after{animation:none;display:none}*{transition:none!important}}
+/* product mock */
+.hero{position:relative;background:#fff}
+.hero>svg{display:block;width:100%;height:auto}
+.vbadge svg{width:10px;height:10px;flex:none}
+.vbadge{position:absolute;left:10px;bottom:10px;background:rgba(0,0,0,.62);color:#fff;border-radius:14px;padding:4px 10px 4px 8px;font-size:11px;font-weight:700;display:flex;gap:5px;align-items:center}
+.vbadge.hs{position:absolute;cursor:pointer}
+.vbadge .dot{top:-14px;right:-16px}
+.thumbs{display:flex;gap:6px;overflow-x:auto;padding:8px 40px 8px 10px;background:#fff;scrollbar-width:none}
+.thumb{flex:none;width:52px;height:52px;border-radius:3px;border:1px solid #e6e6e6;font-size:8.5px;font-weight:600;line-height:1.15;display:flex;align-items:flex-end;padding:4px;color:#444;background:linear-gradient(160deg,#f7efe9,#fff)}
+.thumb.sel{border:2px solid var(--accent)}
+.pname{font-size:14px;line-height:1.4;font-weight:500;color:#222;padding-right:34px}
+.mall{display:inline-block;background:#D0011B;color:#fff;font-size:9px;font-weight:800;padding:1px 4px;border-radius:2px;margin-right:4px;vertical-align:2px}
+.price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;padding-right:34px}
+.price .now{color:var(--accent);font-size:22px;font-weight:700}
+.price .old{color:#999;text-decoration:line-through;font-size:12px}
+.price .off{background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;padding:1px 4px;border-radius:2px}
+.meta{display:flex;gap:10px;color:#777;font-size:11px;margin-top:6px}
+.fs{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#EE4D2D,#FF7337);color:#fff;padding:6px 10px;border-radius:4px;font-weight:800;font-size:12px;font-style:italic;margin-right:34px}
+.fs span{font-style:normal;font-weight:600;font-size:11px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{border:1px solid var(--accent);color:var(--accent);background:var(--accent-soft);font-size:10.5px;font-weight:600;padding:2px 6px;border-radius:2px}
+.chip.g{border-color:#26AA99;color:#1b8a7c;background:#e8f8f5}
+.rowlbl{color:#777;font-size:11px;margin:8px 0 4px}
+.vars{display:flex;gap:6px}
+.vars span{border:1px solid #ddd;padding:4px 10px;font-size:11px;border-radius:2px}
+.vars span:first-child{border-color:var(--accent);color:var(--accent)}
+.desc h4{margin:0 0 6px;font-size:13px}
+.desc p{margin:0 0 6px;font-size:12px;color:#333;line-height:1.5}
+.desc .sec{font-weight:700;font-size:11px;letter-spacing:.02em;color:#222;margin-top:6px}
+.tags{color:#05A;font-size:11.5px}
+.more{color:var(--accent);font-size:12px;text-align:center;margin-top:6px}
+.buybar{position:sticky;bottom:0;display:flex;height:48px;background:#fff;border-top:1px solid #eee;z-index:6}
+.buybar div{flex:1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.buybar .c{background:#00BFA5;color:#fff;flex:.8}.buybar .a{background:#FFEEE8;color:var(--accent)}.buybar .b{background:var(--accent);color:#fff}
+/* shop mock */
+.cover{position:relative;color:#fff;padding:14px 12px 12px}
+.cover .bannerbg{position:absolute;inset:0;z-index:0}
+.cover>*:not(.bannerbg){position:relative;z-index:1}
+.shoprow{display:flex;gap:10px;align-items:center;padding-right:34px}
+.avatar{width:52px;height:52px;border-radius:50%;border:2px solid #fff;background:#fff;display:flex;align-items:center;justify-content:center;flex:none;overflow:hidden}
+.sname{font-weight:700;font-size:14px}
+.sname small{display:block;font-weight:500;font-size:10.5px;opacity:.9}
+.follow{margin-left:auto;border:1px solid #fff;border-radius:3px;padding:3px 8px;font-size:11px;font-weight:700}
+.sstats{display:flex;gap:14px;font-size:10.5px;margin-top:10px;opacity:.95}
+.stabs{display:flex;background:#fff;border-bottom:1px solid #eee}
+.stabs div{flex:1;text-align:center;padding:9px 0;font-size:12px;color:#555}
+.stabs div.on{color:var(--accent);border-bottom:2px solid var(--accent);font-weight:600}
+.promo{border-radius:6px;padding:14px;color:#fff;margin-right:28px}
+.promo b{display:block;font-size:16px;font-weight:800;letter-spacing:-.01em}
+.cats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px;padding-right:30px}
+.cats div{background:#FBF7F4;border:1px solid #eee;border-radius:4px;padding:8px 6px;font-size:10.5px;font-weight:600;text-align:center}
+.shipline{display:flex;gap:8px;align-items:flex-start;font-size:12px;padding-right:34px}
+.lock{border:1.5px dashed #c9bdb8;border-radius:6px;padding:10px;color:#776;font-size:12px;background:#fbfaf9;margin-right:30px}
+.lock b{color:#444}
+/* panel */
+.panel{min-width:0}
+.pcard{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:22px}
+.ph{display:flex;gap:14px;align-items:flex-start;margin-bottom:6px}
+.num{flex:none;width:40px;height:40px;border-radius:12px;background:var(--accent);color:#fff;font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center}
+.ph h2{margin:0;font-size:22px;font-weight:800;letter-spacing:-.01em;line-height:1.2;text-wrap:balance}
+.ph p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px}
+.pill{font-size:11px;font-weight:700;letter-spacing:.04em;padding:3px 8px;border-radius:6px;background:var(--surface-2);color:var(--muted)}
+.pill.p1{background:var(--tip-soft);color:var(--tip)} .pill.p2{background:var(--gold-soft);color:var(--gold)}
+.grp{margin-top:18px}
+.gh{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.gh i{font-style:normal;width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px}
+.grp.rule .gh{color:var(--rule)} .grp.rule .gh i{background:var(--rule-soft)}
+.grp.tip .gh{color:var(--tip)} .grp.tip .gh i{background:var(--tip-soft)}
+.items{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.items li{padding:10px 12px;border-radius:10px;font-size:14.5px;line-height:1.5}
+.grp.rule li{background:var(--rule-soft)} .grp.tip li{background:var(--tip-soft)}
+.items .note{display:block;font-size:12.5px;color:var(--muted);margin-top:3px}
+.tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:1px 6px;border-radius:4px;margin-left:6px;vertical-align:2px;background:var(--accent);color:#fff}
+.tag.fix{background:var(--ex)} .tag.flex{background:var(--gold)}
+.ex{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:18px}
+.ex div{border-radius:12px;padding:12px 14px;font-size:14px}
+.ex .b{background:var(--rule-soft);border:1px solid #F5C9C3}
+.ex .g{background:var(--tip-soft);border:1px solid #BFE3CF}
+.ex small{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.ex .b small{color:var(--rule)} .ex .g small{color:var(--tip)}
+.widget{margin-top:18px;border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:16px}
+.widget h3{margin:0 0 4px;font-size:15px;font-weight:800}
+.widget .hint{margin:0 0 12px;color:var(--muted);font-size:13px}
+.navrow{display:flex;justify-content:space-between;gap:10px;margin-top:20px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:9px 14px;font-weight:600;font-size:13px;cursor:pointer}
+.btn:hover{border-color:var(--accent);color:var(--accent-ink)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.pri:hover{background:var(--accent-ink);color:#fff}
+.list{display:grid;gap:8px;margin-top:14px}
+.li{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);cursor:pointer;text-align:left;width:100%}
+.li:hover{border-color:var(--accent)}
+.li .n{flex:none;width:28px;height:28px;border-radius:8px;background:var(--accent-soft);color:var(--accent-ink);font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px}
+.li .t{flex:1;min-width:0}
+.li .t b{display:block;font-size:14px}
+.li .t span{font-size:12.5px;color:var(--muted)}
+.li .c{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar{height:6px;border-radius:3px;background:var(--surface-2);overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;background:var(--tip);border-radius:3px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:14px;font-size:13px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+/* forms */
+.field{display:grid;gap:4px;font-size:12.5px;font-weight:600;color:var(--muted)}
+.field input,.field textarea{border:1px solid var(--line);border-radius:8px;padding:9px 10px;font-size:14px;font-weight:500;background:var(--bg);width:100%;min-width:0}
+.field input:focus,.field textarea:focus{outline:2px solid var(--accent);outline-offset:-1px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.checks{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:5px;font-size:13.5px}
+.checks li{display:flex;gap:8px;align-items:flex-start}
+.checks .ok{color:var(--tip)} .checks .no{color:var(--rule)} .checks .warn{color:var(--gold)}
+.checks b{flex:none;width:18px;text-align:center}
+.preview{margin-top:10px;font-size:13px;background:var(--bg);border:1px dashed var(--line);padding:8px 10px;border-radius:8px}
+.preview mark{background:var(--accent-soft);color:var(--accent-ink);padding:0 2px}
+.wf{display:grid;gap:5px;margin-top:12px}
+.wf .r{display:grid;grid-template-columns:120px minmax(0,1fr) 92px;gap:8px;align-items:center;font-size:12.5px}
+.wf .r .tr{height:16px;background:var(--surface-2);border-radius:4px;overflow:hidden}
+.wf .r .tr i{display:block;height:100%;border-radius:4px}
+.wf .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+.verdict{margin-top:12px;padding:10px 12px;border-radius:10px;font-weight:700;font-size:14px}
+.verdict.good{background:var(--tip-soft);color:var(--tip)} .verdict.bad{background:var(--rule-soft);color:var(--rule)}
+.formula{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:13px;font-weight:600}
+.formula span{padding:6px 10px;border-radius:8px}
+.formula em{font-style:normal;color:var(--muted)}
+.diag svg{width:100%;max-width:330px;height:auto;display:block}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:330px}
+.slots div{aspect-ratio:1;border-radius:8px;background:var(--bg);border:1px solid var(--line);font-size:11.5px;font-weight:600;padding:6px;display:flex;flex-direction:column;justify-content:space-between}
+.slots div i{font-style:normal;font-size:10px;color:var(--muted);font-weight:700}
+.slots div.main{background:var(--accent-soft);border-color:var(--accent)}
+.stack{display:grid;gap:4px;max-width:360px}
+.stack div{padding:8px 12px;border-radius:8px;font-size:13px;font-weight:600;background:var(--bg);border:1px solid var(--line);display:flex;justify-content:space-between;gap:10px}
+.stack div i{font-style:normal;color:var(--muted);font-weight:500;font-size:12px}
+.stack .hl{background:var(--accent-soft);border-color:var(--accent)}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.flow .st{flex:1 1 180px;border-radius:12px;padding:12px;font-size:13px}
+.flow .st b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.flow .arrow{align-self:center;color:var(--muted);font-weight:800}
+.sheetclose{display:none}
+.backdrop{display:none}
+@media(max-width:899px){
+  .screen{height:68vh;min-height:480px}
+  body.sheet .panel{position:fixed;left:0;right:0;bottom:0;z-index:60;max-height:80vh;overflow-y:auto;padding:0 0 env(safe-area-inset-bottom,0px)}
+  body.sheet .panel .pcard{border-radius:20px 20px 0 0;border-bottom:0;box-shadow:0 -10px 30px rgba(0,0,0,.18)}
+  body.sheet .sheetclose{display:flex;position:sticky;top:0;justify-content:center;padding:8px 0 0;background:var(--bg);border-radius:20px 20px 0 0}
+  body.sheet .backdrop{display:block;position:fixed;inset:0;background:rgba(20,12,14,.35);z-index:55}
+  .wf .r{grid-template-columns:96px minmax(0,1fr) 84px}
+}
+.foot{margin-top:36px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:14px}
+</style>
+
+<div class="app" id="app">
+  <header class="top">
+    <div class="brand">
+      <div class="eyebrow">Digital Lab · Checklist tối ưu Shopee</div>
+      <h1>Soi Trang Shopee</h1>
+      <p class="sub">Mở trang sản phẩm và trang shop quen thuộc ra xem từng chỗ cần tối ưu gì. Chạm vào chấm cam để ôn lại quy định của sàn, cách tối ưu và ví dụ cho từng vị trí.</p>
+    </div>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Màn hình">
+        <button id="sc-product" data-screen="product">Trang sản phẩm</button>
+        <button id="sc-shop" data-screen="shop">Trang shop</button>
+      </div>
+    </div>
+  </header>
+  <div class="modebar" id="modebar"></div>
+  <main class="main">
+    <div class="phonewrap"><div class="phone"><div class="screen" id="screen"></div></div></div>
+    <aside class="panel" id="panel" aria-live="polite"></aside>
+  </main>
+  <div class="backdrop" id="backdrop"></div>
+  <p class="foot">Nội dung lấy từ "Checklist tối ưu Shopee (cập nhật)" của Digital Lab. Thương hiệu "Lumi" trong mô phỏng là thương hiệu giả định dùng để minh họa. Quy định của sàn có thể thay đổi, đối chiếu lại trang Kênh Người Bán trước khi áp dụng.</p>
+</div>
+
+<script>
+/* ============ DỮ LIỆU — sửa nội dung tại đây ============ */
+const DATA = {
+product:{ label:'Trang sản phẩm', hotspots:[
+ {id:'anh-dai-dien', name:'Ảnh đại diện', short:'Ảnh đầu tiên khách thấy khi lướt kết quả tìm kiếm. Ảnh đẹp thì khách mới bấm vào.', phase:1,
+  groups:[
+   {k:'rule', t:'Quy định Shopee', items:[
+    {x:'Không chèn số điện thoại, link hay tên/logo sàn khác lên ảnh', n:'Lỗi phổ biến dễ khiến sản phẩm bị ẩn', tag:'Mới'},
+    {x:'Tỷ lệ ảnh 1:1, kích thước tối thiểu 600×600 px'},
+    {x:'Dung lượng tối đa 2MB/ảnh, độ phân giải tối thiểu 72 dpi'}]},
+   {k:'tip', t:'Tối ưu hiển thị', items:[
+    {x:'Phần sản phẩm chiếm tối thiểu 70% diện tích khung ảnh'},
+    {x:'Logo và thông tin bổ trợ (lắp đặt, bảo hành…) đặt ở chính giữa mép trên, cạnh trái/phải hoặc góc phải bên dưới'},
+    {x:'Ảnh đại diện có thể thay đổi theo chương trình marketing riêng của từng sản phẩm'}]}],
+  widget:'frame',
+  ex:{bad:'Thùng sơn bé xíu giữa nền công trình lộn xộn, góc ảnh dán "Zalo 0909…".', good:'Thùng sơn chiếm khoảng 75% khung trên nền sạch, logo ở mép trên, góc phải dưới ghi "Lau chùi được".'}},
+ {id:'video', name:'Video sản phẩm', short:'Video nằm ở vị trí media đầu tiên, giúp khách thấy sản phẩm "chạy" ngoài đời.', phase:1,
+  groups:[
+   {k:'rule', t:'Quy định Shopee', items:[
+    {x:'Dung lượng tối đa 30MB, độ phân giải không vượt quá 1280×1280 px'},
+    {x:'Độ dài từ 10 đến 60 giây'},
+    {x:'Định dạng MP4'},
+    {x:'Không dùng hình ảnh, video có nội dung phân biệt đối xử, dung tục, bạo lực'}]}],
+  widget:'video',
+  ex:{bad:'Quay một mạch 3 phút 12 giây bằng điện thoại, file .MOV nặng 85MB.', good:'Video MP4 30 giây: mở nắp, khuấy, lăn sơn, tường hoàn thiện. Gọn trong 20MB.'}},
+ {id:'anh-thanh-phan', name:'Ảnh thành phần', short:'8 ảnh phía sau ảnh đại diện. Đây là chỗ thuyết phục khách tin và mua.', phase:1,
+  groups:[
+   {k:'rule', t:'Quy định Shopee', items:[
+    {x:'Tối đa 9 hình ảnh: 1 ảnh đại diện + 8 ảnh thành phần'},
+    {x:'Cùng thông số kỹ thuật: tỷ lệ 1:1, tối thiểu 600×600 px, tối đa 2MB/ảnh, tối thiểu 72 dpi'},
+    {x:'Không chèn số điện thoại, link hay tên/logo sàn khác lên ảnh', n:'Lỗi phổ biến dễ khiến sản phẩm bị ẩn', tag:'Mới'}]},
+   {k:'tip', t:'Tối ưu hiển thị', items:[
+    {x:'Ưu tiên ảnh thực tế hoặc ảnh theo chương trình ở các vị trí gần ảnh đại diện'},
+    {x:'Dùng ảnh để tăng độ tin tưởng: kho hàng, feedback khách hàng, hướng dẫn sử dụng, giấy tờ chứng nhận…'}]}],
+  widget:'slots',
+  ex:{bad:'Chỉ có 2 ảnh, đều chụp lại từ catalogue của hãng.', good:'Đủ 8 ảnh: ảnh chương trình, công trình thực tế, bảng màu, feedback, hướng dẫn, kho, chứng nhận.'}},
+ {id:'ten-sp', name:'Tên sản phẩm', short:'Khách tìm kiếm bằng chữ, thuật toán cũng đọc chữ. Tên là "biển hiệu" của sản phẩm.', phase:1,
+  groups:[
+   {k:'rule', t:'Quy định Shopee', items:[
+    {x:'Độ dài tên sản phẩm tối đa 120 ký tự', tag:'Mới'},
+    {x:'Tránh VIẾT HOA tất cả các chữ cái, trừ tên thương hiệu như ZARA, ASUS'},
+    {x:'Không thêm đánh giá chủ quan và thông điệp quảng cáo như "Hàng nóng bỏng tay", "Sản phẩm bán chạy nhất", "Giảm giá", "Miễn phí vận chuyển" hay giá thành sản phẩm'},
+    {x:'Không dùng biểu tượng cảm xúc, cụm từ trào lưu hoặc ký hiệu } ~ $ ^ { < ! * # @ ; % >', n:'Được dùng các ký tự: ( ) - ,'},
+    {x:'Không chứa từ khóa fake/nhái hoặc các từ khóa tương tự'},
+    {x:'Không đưa số điện thoại, link hay tên sàn khác vào tên sản phẩm', n:'Lỗi phổ biến dễ khiến sản phẩm bị ẩn', tag:'Mới'},
+    {x:'Nếu là bộ sản phẩm thì tên phải ghi rõ "Combo" hoặc "Bộ sản phẩm"'}]},
+   {k:'tip', t:'Công thức đặt tên', items:[
+    {x:'Có thương hiệu: Loại sản phẩm + Thương hiệu + Tên/Mã sản phẩm + Mô tả sản phẩm'},
+    {x:'Không có thương hiệu: Loại sản phẩm + Mô tả sản phẩm'},
+    {x:'Một số ngành hàng có gợi ý tối ưu riêng từ Shopee', n:'Máy tính - Laptop · Điện thoại - Phụ kiện · Nhà cửa & Đời sống · Thể thao - Du lịch · Giày dép · Thời trang · Sức khỏe & Sắc đẹp · Mẹ & Bé'}]},
+   {k:'tip', t:'Tối ưu tìm kiếm', items:[
+    {x:'Đưa từ khóa chính lên đầu tên sản phẩm', n:'Trên điện thoại, tên dài bị cắt, khách chỉ thấy phần đầu', tag:'Mới'},
+    {x:'Không nhồi nhét từ khóa'},
+    {x:'Thử nghiệm từ khóa ngách (từ khóa dài, mở rộng)', n:'Ví dụ: Kem trị mụn → Kem trị mụn cho da nhờn'},
+    {x:'Tránh đặt tên y hệt sản phẩm của đối thủ cạnh tranh'}]}],
+  widget:'name',
+  ex:{bad:'🔥SƠN NƯỚC GIÁ RẺ NHẤT🔥 freeship toàn quốc, ib 0909xxx', good:'Sơn nội thất Acrylic Lumi L01 lau chùi được, màu trắng sứ, thùng 18L'}},
+ {id:'gia-ban', name:'Giá bán (giá ưu đãi)', short:'Giá gạch ngang và giá ưu đãi đến từ cài đặt "Khuyến mãi của shop".', phase:1,
+  groups:[
+   {k:'tip', t:'Cài đặt (Giai đoạn 1)', items:[
+    {x:'Cài đặt Khuyến mãi của shop (giá KM) để hiển thị giá ưu đãi bên cạnh giá gốc gạch ngang'}]},
+   {k:'rule', t:'Bắt buộc kiểm tra', items:[
+    {x:'Kiểm tra biên lợi nhuận khi các chương trình cộng dồn', n:'Giá KM, voucher, combo và freeship có thể áp dụng chồng lên nhau. Tính giá thực nhận sau khi trừ toàn bộ ưu đãi và phí sàn để không bán lỗ.'}]}],
+  widget:'calc',
+  ex:{bad:'Giảm 40%, thêm voucher 50K, thêm combo. Đơn nào về cũng lỗ mà không ai biết.', good:'Bật chương trình xong thì tính lại giá thực nhận. Còn lãi mới chạy.'}},
+ {id:'chuong-trinh', name:'Chương trình marketing', short:'Voucher, combo, deal sốc, flash sale: những thứ khiến khách bấm "Mua ngay" hôm nay thay vì để mai.', phase:1,
+  groups:[
+   {k:'tip', t:'Cài đặt (Giai đoạn 1)', items:[
+    {x:'Voucher toàn shop'},
+    {x:'Voucher khách hàng mới', n:'Dành cho người mua lần đầu tại shop. Không bắt buộc, mỗi shop linh hoạt lựa chọn', tag:'Linh hoạt'},
+    {x:'Voucher người theo dõi', n:'Khuyến khích khách bấm theo dõi shop'},
+    {x:'Combo khuyến mãi', n:'Tùy lĩnh vực để áp dụng hay không', tag:'Linh hoạt'},
+    {x:'Mua kèm Deal sốc', n:'Tùy lĩnh vực để áp dụng hay không', tag:'Linh hoạt'},
+    {x:'Flash Sale của shop', n:'Chọn khung giờ và sản phẩm chủ lực'},
+    {x:'Kiểm tra việc mua gói Freeship Extra Plus'}]},
+   {k:'rule', t:'Bắt buộc kiểm tra', items:[
+    {x:'Kiểm tra biên lợi nhuận khi các chương trình cộng dồn', n:'Dùng máy tính ở mục Giá bán để tính giá thực nhận'}]}],
+  widget:'stackmkt',
+  ex:{bad:'Bật hết mọi loại voucher cho "nhìn cho vui", flash sale chọn sản phẩm ít người tìm.', good:'Voucher người theo dõi để tăng follow, flash sale đặt vào sản phẩm chủ lực và khung giờ đông khách.'}},
+ {id:'mo-ta', name:'Nội dung mô tả & hashtag', short:'Phần khách đọc khi đã quan tâm, và là phần giúp thuật toán hiểu shop bán cho ai.', phase:1,
+  groups:[
+   {k:'rule', t:'Quy định Shopee', items:[
+    {x:'Sản phẩm có nhiều lựa chọn về số lượng phải ghi số lượng cụ thể', n:'VD: Khẩu trang y tế - 50 cái/1 hộp. Với sơn: thùng 5L, thùng 18L'},
+    {x:'Gắn đúng hashtag liên quan, tối đa 18 hashtag, không chứa từ khóa fake/nhái', tag:'Đã sửa'},
+    {x:'Không đưa số điện thoại, link hay tên sàn khác vào mô tả', n:'Lỗi phổ biến dễ khiến sản phẩm bị ẩn', tag:'Mới'},
+    {x:'Một số ngành hàng đặc thù có thêm quy định riêng của Shopee'}]},
+   {k:'tip', t:'Tối ưu nội dung', items:[
+    {x:'Có đủ 4 phần: Giới thiệu khái quát, Ưu điểm nổi bật, Thông số kỹ thuật, Hướng dẫn sử dụng'},
+    {x:'Đặt tiêu đề sản phẩm ngay ở đầu nội dung mô tả'},
+    {x:'Lặp từ khóa 2-3 lần, kết hợp từ khóa dài/mở rộng', n:'VD từ khóa chính "Rong biển ăn liền cho bé" → mở rộng: rong biển ăn liền cho trẻ em, rong biển ăn liền Hàn Quốc cho bé, rong biển miếng ăn liền cho bé…'},
+    {x:'Thể hiện bối cảnh sử dụng để AI của sàn hiểu sản phẩm và tệp khách hàng', n:'VD shop nước mắm: mô tả thêm sản phẩm hợp với ai, dùng chế biến món gì'},
+    {x:'Độ dài khoảng 2.000 - 3.000 ký tự', n:'Shopee giới hạn tối đa 3.000 ký tự; 500 từ tiếng Việt ≈ 2.500 - 3.000 ký tự', tag:'Đã sửa'}]}],
+  widget:'desc',
+  ex:{bad:'"Sơn đẹp, bền, giá tốt. Mua ngay kẻo hết!" kèm 25 hashtag và link Zalo.', good:'Mở đầu bằng tên sản phẩm, đủ 4 phần, nói rõ hợp phòng nào, nhà ai; 8-10 hashtag đúng chủ đề.'}}
+]},
+shop:{ label:'Trang shop', hotspots:[
+ {id:'s-nhan-dien', name:'Nhận diện thương hiệu', short:'Avatar, ảnh bìa, banner, màu sắc: nhìn là biết shop của ai.', phase:1,
+  groups:[{k:'tip', t:'Giai đoạn 1', items:[{x:'Bám theo nhận diện thương hiệu', n:'Bám sát brand guideline: logo, màu, font, phong cách hình ảnh'}]}],
+  widget:'brand',
+  ex:{bad:'Avatar là chữ "SHOP 123", banner hồng xanh neon chữ "SALE SẬP SÀN".', good:'Avatar là logo, banner dùng đúng màu và font trong brand guideline.'}},
+ {id:'s-gioi-thieu', name:'Giới thiệu shop', short:'Đoạn khách đọc để biết shop là ai, bán gì, có đáng tin không.', phase:1,
+  groups:[{k:'tip', t:'Giai đoạn 1', items:[
+   {x:'Kiểm tra nội dung giới thiệu shop', n:'Theo đúng nội dung giới thiệu thương hiệu'},
+   {x:'Bám theo tính cách thương hiệu', n:'Đọc lại Bản mô tả thương hiệu trước khi viết'}]}],
+  ex:{bad:'"Shop bán đủ loại sơn, keo, ốc vít, giá rẻ bất ngờ!!! Ib để có giá tốt"', good:'"Lumi Paint - sơn nội thất gốc nước cho căn hộ gia đình. Ít mùi, lau chùi được, tư vấn màu miễn phí."'}},
+ {id:'s-chuong-trinh', name:'Chương trình đang chạy', short:'Banner và voucher trên trang shop phải khớp với chiến dịch thương hiệu đang làm.', phase:1,
+  groups:[{k:'tip', t:'Giai đoạn 1', items:[
+   {x:'Thể hiện được các chương trình marketing thương hiệu đang triển khai', n:'Kiểm tra kho tài nguyên, trao đổi với team leader'}]}],
+  ex:{bad:'Banner "Siêu sale 9.9" vẫn treo dù đã tháng 10.', good:'Banner theo chiến dịch hiện tại, voucher trên shop trùng với chương trình đang chạy.'}},
+ {id:'s-danh-muc', name:'Danh mục sản phẩm', short:'Giúp khách tự đi tìm đúng loại sơn mình cần.', phase:1,
+  groups:[{k:'tip', t:'Giai đoạn 1', items:[
+   {x:'Xây dựng danh mục sản phẩm trên shop'},
+   {x:'Tối ưu thông tin từng sản phẩm', n:'Xem màn hình "Trang sản phẩm"'}]}],
+  widget:'toProduct',
+  ex:{bad:'Chỉ có một danh mục "Tất cả sản phẩm (86)".', good:'Danh mục theo nhu cầu: Sơn nội thất, Sơn ngoại thất, Chống thấm, Sơn lót, Combo tiết kiệm, Dụng cụ.'}},
+ {id:'s-van-chuyen', name:'Cài đặt vận chuyển', short:'Hàng gửi từ đâu, ai giao, giao kiểu gì. Sai là khách thấy phí ship vô lý hoặc giao chậm.', phase:1,
+  groups:[{k:'tip', t:'Giai đoạn 1', items:[
+   {x:'Địa chỉ kho hàng, định vị bản đồ'},
+   {x:'Đơn vị vận chuyển, hình thức vận chuyển'}]}],
+  ex:{bad:'"Gửi từ: chưa cập nhật", chưa bật đơn vị vận chuyển nào.', good:'Kho tại Hà Nội, ghim đúng vị trí; bật giao nhanh và giao tiết kiệm.'}},
+ {id:'s-gd2', name:'Giai đoạn 2: Ads & Affiliate', short:'Chỉ đổ tiền kéo traffic khi shop và sản phẩm đã tối ưu xong.', phase:2,
+  groups:[{k:'tip', t:'Giai đoạn 2', items:[
+   {x:'Shopee Ads (quảng cáo Shopee)', n:'Triển khai sau khi shop và sản phẩm đã tối ưu xong'},
+   {x:'Shopee Affiliate (tiếp thị liên kết)', n:'Triển khai sau khi shop và sản phẩm đã tối ưu xong'}]}],
+  widget:'phase',
+  ex:{bad:'Shop mới mở, sản phẩm chưa có ảnh đủ, đã bật Ads 500K/ngày.', good:'Hoàn tất checklist giai đoạn 1 rồi mới bật Ads và mời KOC/Affiliate.'}}
+]}};
+
+/* ============ TRẠNG THÁI ============ */
+const ST = {screen:'product', active:null};
+const KEY='soi-shopee-v1';
+try{const s=JSON.parse(localStorage.getItem(KEY)||'{}'); if(s.screen) ST.screen=s.screen;}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({screen:ST.screen}))}catch(e){}}
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const hsList=()=>DATA[ST.screen].hotspots;
+const hsIndex=id=>hsList().findIndex(h=>h.id===id);
+const itemsOf=h=>h.groups.flatMap((g,gi)=>g.items.map((it,ii)=>({...it,k:g.k,key:h.id+':'+gi+':'+ii})));
+const fmt=n=>Math.round(n).toLocaleString('vi-VN')+'đ';
+
+/* ============ SVG MINH HỌA ============ */
+function bucketSVG(){
+  return `<svg viewBox="0 0 300 300" aria-label="Ảnh đại diện: thùng sơn Lumi">
+   <defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FDF6F1"/><stop offset="1" stop-color="#F3E6DC"/></linearGradient>
+   <linearGradient id="bk" x1="0" x2="1"><stop offset="0" stop-color="#E9E9EC"/><stop offset=".5" stop-color="#FFFFFF"/><stop offset="1" stop-color="#D9D9DE"/></linearGradient></defs>
+   <rect width="300" height="300" fill="url(#bg1)"/>
+   <text x="150" y="24" text-anchor="middle" font-size="13" font-weight="800" letter-spacing="3" fill="#EE4D2D" font-family="Montserrat,Arial">LUMI</text>
+   <path d="M95 64 q55 -40 110 0" fill="none" stroke="#888" stroke-width="5"/>
+   <rect x="58" y="62" width="184" height="210" rx="10" fill="url(#bk)" stroke="#bbb"/>
+   <ellipse cx="150" cy="64" rx="92" ry="12" fill="#F2F2F4" stroke="#bbb"/>
+   <rect x="58" y="112" width="184" height="104" fill="#EE4D2D"/>
+   <rect x="58" y="200" width="184" height="16" fill="#F7B7A6"/>
+   <text x="150" y="150" text-anchor="middle" font-size="26" font-weight="800" fill="#fff" font-family="Montserrat,Arial">LUMI L01</text>
+   <text x="150" y="174" text-anchor="middle" font-size="12" font-weight="600" fill="#fff" font-family="Montserrat,Arial">SƠN NỘI THẤT ACRYLIC</text>
+   <text x="150" y="193" text-anchor="middle" font-size="11" fill="#fff" font-family="Montserrat,Arial">Trắng sứ · 18L</text>
+   <rect x="196" y="262" width="96" height="28" rx="6" fill="#137A4C"/>
+   <text x="244" y="280" text-anchor="middle" font-size="10.5" font-weight="700" fill="#fff" font-family="Montserrat,Arial">Lau chùi được</text>
+  </svg>`;
+}
+const play=`<svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 1l7 4-7 4z" fill="#fff"/></svg>`;
+const icBack=`<svg class="ic" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" stroke="#EE4D2D" stroke-width="2.4" fill="none"/></svg>`;
+const icCart=`<svg class="ic" viewBox="0 0 24 24"><path d="M3 4h3l2 11h11l2-8H7" stroke="#EE4D2D" stroke-width="2" fill="none"/><circle cx="9" cy="19" r="1.6" fill="#EE4D2D"/><circle cx="18" cy="19" r="1.6" fill="#EE4D2D"/></svg>`;
+
+/* ============ MOCKUP — TRANG SẢN PHẨM ============ */
+function dot(id){
+  const i=hsIndex(id)+1; const h=hsList()[i-1];
+  return `<button class="dot" aria-label="Xem mục ${i}: ${esc(h.name)}">${i}</button>`;
+}
+function H(id,inner,extra=''){return `<div class="hs${ST.active===id?' on':''}" data-hs="${id}" ${extra}>${inner}${dot(id)}</div>`}
+const chrome=()=>`<div class="statusbar"><span>9:41</span><span>5G ▮▮▮</span></div><div class="appbar">${icBack}<div class="search">Sơn nội thất</div>${icCart}</div>`;
+
+function goodProduct(){
+  const thumbs=['Flash Sale -15%','Công trình thực tế','Bảng màu','Feedback ★★★★★','Hướng dẫn thi công','Thông số','Kho hàng','Chứng nhận'];
+  return `${chrome()}
+  <div class="card" style="padding:0;margin-top:0">
+    ${H('anh-dai-dien',`<div class="hero">${bucketSVG()}
+       <div class="vbadge hs${ST.active==='video'?' on':''}" data-hs="video">${play} 0:30${dot('video')}</div></div>`)}
+    ${H('anh-thanh-phan',`<div class="thumbs">${thumbs.map((t,i)=>`<div class="thumb${i===0?' sel':''}">${t}</div>`).join('')}</div>`)}
+  </div>
+  <div class="card">
+    ${H('ten-sp',`<div class="pname"><span class="mall">Mall</span>Sơn nội thất Acrylic Lumi L01 lau chùi được, màu trắng sứ, thùng 18L</div>`)}
+    <div style="height:8px"></div>
+    ${H('gia-ban',`<div class="price"><span class="now">₫1.190.000</span><span class="old">₫1.400.000</span><span class="off">-15%</span></div>`)}
+    <div class="meta"><span>★ 4.9</span><span>Đã bán 1,2k</span><span>Hà Nội</span></div>
+  </div>
+  <div class="card">
+    ${H('chuong-trinh',`<div class="fs">FLASH SALE <span>Kết thúc sau 02:14:33</span></div>
+      <div class="chips"><span class="chip">Giảm ₫50k</span><span class="chip">Người theo dõi -₫20k</span><span class="chip">Bạn mới -₫30k</span><span class="chip">Combo mua 2 giảm 5%</span><span class="chip">Mua kèm deal sốc</span><span class="chip g">Freeship Extra</span></div>`)}
+    <div class="rowlbl">Phân loại</div><div class="vars"><span>Thùng 18L</span><span>Thùng 5L</span><span>Lon 1L</span></div>
+  </div>
+  <div class="card desc">
+    ${H('mo-ta',`<h4>Mô tả sản phẩm</h4>
+      <p><b>Sơn nội thất Acrylic Lumi L01 lau chùi được, màu trắng sứ, thùng 18L</b></p>
+      <div class="sec">GIỚI THIỆU KHÁI QUÁT</div><p>Sơn nội thất Acrylic gốc nước cho phòng khách, phòng ngủ, phòng trẻ em. Ít mùi, gia đình có thể ở ngay sau 24 giờ…</p>
+      <div class="sec">ƯU ĐIỂM NỔI BẬT</div><p>Lau chùi vết bút màu, độ phủ cao, màng sơn mịn…</p>
+      <div class="sec">THÔNG SỐ KỸ THUẬT</div><p>Thùng 18L · phủ 120-140 m²/2 lớp · khô bề mặt 30 phút…</p>
+      <div class="sec">HƯỚNG DẪN SỬ DỤNG</div><p>Vệ sinh bề mặt, sơn 1 lớp lót, 2 lớp phủ…</p>
+      <p class="tags">#sonnoithat #sonacrylic #sonlauchui #sontrangsu #sonnhachungcu #sonphongngu</p>
+      <div class="more">Xem thêm ▾ <span style="color:#999">(≈ 2.450 ký tự)</span></div>`)}
+  </div>
+  <div class="buybar"><div class="c">Chat</div><div class="a">Thêm vào giỏ</div><div class="b">Mua ngay</div></div>`;
+}
+/* ============ MOCKUP — TRANG SHOP ============ */
+function goodShop(){
+  return `<div class="statusbar"><span>9:41</span><span>5G ▮▮▮</span></div>
+  ${H('s-nhan-dien',`<div class="cover"><div class="bannerbg" style="background:linear-gradient(135deg,#C2381C,#EE4D2D 55%,#F7B7A6)"></div>
+     <div class="shoprow"><div class="avatar"><svg viewBox="0 0 52 52" width="52" height="52"><rect width="52" height="52" fill="#fff"/><text x="26" y="31" text-anchor="middle" font-size="12" font-weight="800" fill="#EE4D2D" font-family="Montserrat,Arial" letter-spacing="1">LUMI</text></svg></div>
+     <div class="sname">Lumi Paint Official<small>Shopee Mall · Online 5 phút trước</small></div><div class="follow">+ Theo dõi</div></div>
+     <div class="sstats"><span><b>48</b> Sản phẩm</span><span><b>12,4k</b> Theo dõi</span><span><b>4.9</b> Đánh giá</span></div></div>`)}
+  <div class="stabs"><div class="on">Shop</div><div>Sản phẩm</div><div>Danh mục</div></div>
+  <div class="card">${H('s-gioi-thieu',`<div style="font-weight:700;margin-bottom:4px">Giới thiệu shop</div>
+     <p style="margin:0;padding-right:30px;color:#444;font-size:12px">Lumi Paint là sơn nội thất gốc nước cho căn hộ gia đình Việt. Ít mùi, lau chùi được, tư vấn phối màu miễn phí qua chat.</p>`)}</div>
+  <div class="card">${H('s-chuong-trinh',`<div class="promo" style="background:linear-gradient(120deg,#EE4D2D,#C2381C)"><small style="font-size:10px;font-weight:700;letter-spacing:.1em">CHIẾN DỊCH THÁNG 10</small><b>Nhà mới đón Tết sớm</b><span style="font-size:11px">Giảm đến 15% · Tặng bộ lăn sơn</span></div>
+     <div class="chips"><span class="chip">Giảm ₫50k</span><span class="chip">Người theo dõi -₫20k</span><span class="chip">Bạn mới -₫30k</span></div>`)}</div>
+  <div class="card">${H('s-danh-muc',`<div style="font-weight:700">Danh mục</div><div class="cats"><div>Sơn nội thất</div><div>Sơn ngoại thất</div><div>Chống thấm</div><div>Sơn lót</div><div>Combo tiết kiệm</div><div>Dụng cụ</div></div>`)}</div>
+  <div class="card">${H('s-van-chuyen',`<div class="shipline"><svg class="ic" viewBox="0 0 24 24"><path d="M2 6h12v9H2zM14 9h4l3 3v3h-7z" fill="none" stroke="#26AA99" stroke-width="1.8"/><circle cx="6" cy="17" r="2" fill="#26AA99"/><circle cx="17" cy="17" r="2" fill="#26AA99"/></svg>
+     <div><b>Gửi từ Hà Nội</b> · Kho Long Biên (đã ghim bản đồ)<br><span style="color:#777">Giao nhanh · Giao tiết kiệm · Hỏa tốc nội thành</span></div></div>`)}</div>
+  <div class="card">${H('s-gd2',`<div class="lock"><b>🔒 Giai đoạn 2: Shopee Ads · Shopee Affiliate</b><br>Mở khóa khi đã hoàn tất tối ưu shop và sản phẩm.</div>`)}</div>`;
+}
+/* ============ WIDGET TRONG PANEL ============ */
+function widget(w){
+  if(w==='frame') return `<div class="widget diag"><h3>Bố cục ảnh đại diện</h3><p class="hint">Vùng cam là chỗ nên đặt logo và thông tin bổ trợ. Khung đứt nét là phần sản phẩm, tối thiểu 70% diện tích.</p>
+   <svg viewBox="0 0 240 240" role="img" aria-label="Sơ đồ khung ảnh 1:1">
+    <rect x="1" y="1" width="238" height="238" rx="6" fill="#fff" stroke="#EBE2DE" stroke-width="2"/>
+    <rect x="70" y="4" width="100" height="20" rx="4" fill="#FFEFE9" stroke="#EE4D2D"/><text x="120" y="18" text-anchor="middle" font-size="9" font-weight="700" fill="#C2381C" font-family="Montserrat">Mép trên giữa</text>
+    <rect x="4" y="70" width="18" height="100" rx="4" fill="#FFEFE9" stroke="#EE4D2D"/><rect x="218" y="70" width="18" height="100" rx="4" fill="#FFEFE9" stroke="#EE4D2D"/>
+    <text x="13" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#C2381C" font-family="Montserrat" transform="rotate(-90 13 120)">Cạnh trái</text>
+    <text x="227" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#C2381C" font-family="Montserrat" transform="rotate(90 227 120)">Cạnh phải</text>
+    <rect x="160" y="214" width="76" height="22" rx="4" fill="#FFEFE9" stroke="#EE4D2D"/><text x="198" y="228" text-anchor="middle" font-size="8.5" font-weight="700" fill="#C2381C" font-family="Montserrat">Góc phải dưới</text>
+    <rect x="30" y="30" width="180" height="180" rx="6" fill="#E6F4EC" stroke="#137A4C" stroke-dasharray="5 4" stroke-width="1.5"/>
+    <text x="120" y="116" text-anchor="middle" font-size="15" font-weight="800" fill="#137A4C" font-family="Montserrat">Sản phẩm</text>
+    <text x="120" y="134" text-anchor="middle" font-size="11" font-weight="600" fill="#137A4C" font-family="Montserrat">≥ 70% khung</text>
+   </svg><p class="hint" style="margin:10px 0 0">1:1 · ≥ 600×600 px · ≤ 2MB · ≥ 72 dpi</p></div>`;
+  if(w==='video') return `<div class="widget"><h3>Kiểm tra nhanh file video</h3><p class="hint">Nhập thông số video của bạn.</p>
+   <div class="grid2"><label class="field">Độ dài (giây)<input id="v-len" type="number" min="0" value="45"></label>
+   <label class="field">Dung lượng (MB)<input id="v-mb" type="number" min="0" value="22"></label>
+   <label class="field">Cạnh dài nhất (px)<input id="v-px" type="number" min="0" value="1280"></label>
+   <label class="field">Định dạng<input id="v-fmt" type="text" value="MP4"></label></div><ul class="checks" id="v-out"></ul></div>`;
+  if(w==='slots'){const s=['Ảnh đại diện','Ảnh chương trình','Công trình thực tế','Bảng màu','Feedback khách','Hướng dẫn thi công','Thông số kỹ thuật','Kho hàng','Chứng nhận'];
+   return `<div class="widget"><h3>9 ô ảnh, xếp thế nào?</h3><p class="hint">Gợi ý thứ tự cho sản phẩm sơn (tham khảo). Ô gần ảnh đại diện ưu tiên ảnh thực tế hoặc ảnh chương trình.</p>
+   <div class="slots">${s.map((t,i)=>`<div class="${i===0?'main':''}"><i>${i===0?'ẢNH 1 · ĐẠI DIỆN':'ẢNH '+(i+1)}</i>${t}</div>`).join('')}</div></div>`;}
+  if(w==='name') return `<div class="widget"><h3>Máy soi tên sản phẩm</h3><p class="hint">Gõ thử tên sản phẩm. Máy sẽ soi các lỗi theo quy định.</p>
+   <div class="formula" style="margin-bottom:12px"><span style="background:#FFEFE9">Loại SP</span><em>+</em><span style="background:#EAF0FA">Thương hiệu</span><em>+</em><span style="background:#FFF6E0">Tên/Mã</span><em>+</em><span style="background:#E6F4EC">Mô tả</span></div>
+   <label class="field">Tên sản phẩm<textarea id="n-in" rows="3">🔥SƠN NƯỚC GIÁ RẺ NHẤT🔥 freeship toàn quốc, ib 0909123456</textarea></label>
+   <div class="preview" id="n-prev"></div><ul class="checks" id="n-out"></ul>
+   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button class="btn" id="n-good">Thử tên chuẩn</button><button class="btn" id="n-bad">Thử tên lỗi</button></div></div>`;
+  if(w==='calc') return `<div class="widget"><h3>Máy tính giá thực nhận khi cộng dồn ưu đãi</h3><p class="hint">Số liệu mặc định là ví dụ. Nhập phí sàn theo biểu phí ngành hàng hiện tại của shop (gồm phí cố định, phí thanh toán, phí dịch vụ như Freeship Extra).</p>
+   <div class="grid2">
+    <label class="field">Giá gốc (đ)<input id="c-list" type="number" value="1400000"></label>
+    <label class="field">Giảm giá KM của shop (%)<input id="c-km" type="number" value="15"></label>
+    <label class="field">Combo / Deal thêm (%)<input id="c-combo" type="number" value="5"></label>
+    <label class="field">Voucher shop (đ)<input id="c-vou" type="number" value="50000"></label>
+    <label class="field">Tổng phí sàn (%)<input id="c-fee" type="number" value="15"></label>
+    <label class="field">Giá vốn (đ)<input id="c-cost" type="number" value="780000"></label></div>
+   <div class="wf" id="c-wf"></div><div id="c-verdict"></div></div>`;
+  if(w==='stackmkt') return `<div class="widget"><h3>Các lớp ưu đãi chồng lên nhau</h3><p class="hint">Khách thấy một mức giá, nhưng shop phải gánh từng lớp bên dưới.</p>
+   <div class="stack"><div>Giá gốc <i>niêm yết</i></div><div>− Khuyến mãi của shop <i>giá KM</i></div><div>− Combo / Mua kèm deal sốc <i>linh hoạt</i></div><div>− Flash Sale <i>khung giờ chủ lực</i></div><div>− Voucher shop / bạn mới / người theo dõi <i>cộng thêm</i></div><div>− Phí sàn, Freeship Extra <i>trừ khi đối soát</i></div><div class="hl">= Giá thực nhận <i>phải > giá vốn</i></div></div>
+   <div style="margin-top:12px"><button class="btn" data-go="gia-ban">Mở máy tính giá ở mục Giá bán →</button></div></div>`;
+  if(w==='desc') return `<div class="widget"><h3>Khung mô tả chuẩn</h3><p class="hint">Đọc từ trên xuống, giống khách lướt.</p>
+   <div class="stack" style="margin-bottom:14px"><div class="hl">Tiêu đề sản phẩm <i>dòng đầu tiên</i></div><div>1. Giới thiệu khái quát <i>cho ai, bối cảnh dùng</i></div><div>2. Ưu điểm nổi bật <i>lặp từ khóa</i></div><div>3. Thông số kỹ thuật <i>số lượng cụ thể</i></div><div>4. Hướng dẫn sử dụng</div><div>Hashtag <i>≤ 18, đúng chủ đề</i></div></div>
+   <h3>Máy soi mô tả</h3><p class="hint">Dán mô tả của bạn vào đây.</p>
+   <label class="field">Nội dung mô tả<textarea id="d-in" rows="6">Sơn nội thất Acrylic Lumi L01 lau chùi được, thùng 18L
+GIỚI THIỆU KHÁI QUÁT: Sơn nội thất cho phòng khách, phòng ngủ, phòng trẻ em...
+ƯU ĐIỂM NỔI BẬT: Lau chùi được, ít mùi...
+THÔNG SỐ KỸ THUẬT: Thùng 18L, phủ 120-140 m2/2 lớp
+HƯỚNG DẪN SỬ DỤNG: Sơn 1 lớp lót, 2 lớp phủ
+#sonnoithat #sonacrylic #sonlauchui</textarea></label><ul class="checks" id="d-out"></ul></div>`;
+  if(w==='brand') return `<div class="widget"><h3>Soi theo brand guideline</h3><p class="hint">Cầm brand guideline, đối chiếu 4 thứ trên trang shop.</p>
+   <div class="stack"><div>Logo <i>avatar shop, mép trên ảnh SP</i></div><div>Màu chủ đạo <i>ảnh bìa, banner</i></div><div>Font chữ <i>chữ trên banner, ảnh</i></div><div>Phong cách ảnh <i>đồng bộ giữa các sản phẩm</i></div></div></div>`;
+  if(w==='toProduct') return `<div class="widget"><h3>Danh mục xong, đến lượt từng sản phẩm</h3><p class="hint">Mỗi sản phẩm trong danh mục cần qua checklist ở màn hình Trang sản phẩm.</p><button class="btn pri" id="go-product">Mở Trang sản phẩm →</button></div>`;
+  if(w==='phase') return `<div class="widget"><h3>Thứ tự triển khai</h3><p class="hint">Kéo khách vào một shop chưa tối ưu thì tốn tiền mà không ra đơn.</p>
+   <div class="flow"><div class="st" style="background:var(--tip-soft)"><b style="color:var(--tip)">Giai đoạn 1 · Tối ưu</b>Trang shop · Trang sản phẩm · Chương trình marketing · Kiểm tra biên lợi nhuận</div><div class="arrow">→</div><div class="st" style="background:var(--gold-soft)"><b style="color:var(--gold)">Giai đoạn 2 · Kéo traffic</b>Shopee Ads · Shopee Affiliate</div></div></div>`;
+  return '';
+}
+
+/* ============ PANEL ============ */
+function itemsHTML(g){
+  return `<ul class="items">${g.items.map(it=>`<li>${esc(it.x)}${it.tag?`<span class="tag ${it.tag==='Đã sửa'?'fix':it.tag==='Linh hoạt'?'flex':''}">${it.tag}</span>`:''}${it.n?`<span class="note">${esc(it.n)}</span>`:''}</li>`).join('')}</ul>`;
+}
+function head(h){
+  const i=hsIndex(h.id)+1, c=itemsOf(h).length;
+  return `<div class="ph"><div class="num">${i}</div><div><h2>${esc(h.name)}</h2><p>${esc(h.short)}</p></div></div>
+   <div class="pills"><span class="pill ${h.phase===2?'p2':'p1'}">GIAI ĐOẠN ${h.phase}</span><span class="pill">${c} tiêu chí</span></div>`;
+}
+function navRow(h){
+  const L=hsList(), i=hsIndex(h.id);
+  return `<div class="navrow"><button class="btn" data-go="${L[(i-1+L.length)%L.length].id}">← ${esc(L[(i-1+L.length)%L.length].name)}</button><button class="btn pri" data-go="${L[(i+1)%L.length].id}">${esc(L[(i+1)%L.length].name)} →</button></div>`;
+}
+function panelExplore(){
+  const h=hsList().find(x=>x.id===ST.active);
+  if(!h){
+    const L=hsList();
+    return `<div class="pcard"><div class="eyebrow">${DATA[ST.screen].label} · ${L.length} điểm cần soi</div>
+     <h2 style="margin:6px 0 4px;font-size:22px;font-weight:800">Chạm vào chấm cam trên điện thoại</h2>
+     <p style="margin:0;color:var(--muted)">Mỗi chấm là một vị trí trên trang. Bấm vào để xem quy định của sàn, cách tối ưu và ví dụ trước/sau.</p>
+     <div class="legend"><span><i class="sw" style="background:var(--rule)"></i>Quy định Shopee: làm sai dễ bị ẩn, bị phạt</span><span><i class="sw" style="background:var(--tip)"></i>Tối ưu: làm tốt thì bán tốt hơn</span></div>
+     <div class="list">${L.map((x,i)=>`<button class="li" data-go="${x.id}"><span class="n">${i+1}</span><span class="t"><b>${esc(x.name)}</b><span>${esc(x.short)}</span></span><span class="c">${itemsOf(x).length} tiêu chí</span></button>`).join('')}</div></div>`;
+  }
+  return `<div class="sheetclose"><button class="btn" id="closeSheet">Đóng ✕</button></div><div class="pcard">${head(h)}
+   ${h.groups.map(g=>`<div class="grp ${g.k}"><div class="gh"><i>${g.k==='rule'?'!':'✓'}</i>${esc(g.t)}</div>${itemsHTML(g)}</div>`).join('')}
+   ${h.widget?widget(h.widget):''}
+   ${h.ex?`<div class="ex"><div class="b"><small>Chưa ổn</small>${esc(h.ex.bad)}</div><div class="g"><small>Nên làm</small>${esc(h.ex.good)}</div></div>`:''}
+   ${navRow(h)}</div>`;
+}
+/* ============ RENDER ============ */
+function render(keepScroll){
+  document.querySelectorAll('[data-screen]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.screen===ST.screen));
+  const tot=DATA[ST.screen].hotspots.reduce((a,h)=>a+itemsOf(h).length,0);
+  $('#modebar').innerHTML=`<span>Bấm chấm cam trên điện thoại để xem cần tối ưu gì ở từng vị trí.</span><span class="stat">${DATA[ST.screen].hotspots.length} vị trí · ${tot} tiêu chí</span>`;
+  const sc=$('#screen'); const top=sc.scrollTop;
+  sc.innerHTML=ST.screen==='product'?goodProduct():goodShop();
+  if(keepScroll) sc.scrollTop=top;
+  renderPanel();
+}
+function renderPanel(){
+  $('#panel').innerHTML=panelExplore();
+  document.body.classList.toggle('sheet',!!ST.active&&matchMedia('(max-width:899px)').matches);
+  wire();
+}
+function select(id){
+  ST.active=id;
+  render(true);
+  const el=$('#screen').querySelector(`[data-hs="${id}"]`);
+  if(el){const sc=$('#screen'); const r=el.getBoundingClientRect(), s=sc.getBoundingClientRect(); if(r.top<s.top||r.bottom>s.bottom) sc.scrollTo({top:sc.scrollTop+r.top-s.top-60,behavior:'smooth'});}
+  if(!matchMedia('(max-width:899px)').matches){const pc=$('#panel'); const r=pc.getBoundingClientRect(); if(r.top<0) window.scrollTo({top:window.scrollY+r.top-12,behavior:'smooth'});}
+  else{$('#panel').scrollTop=0;}
+}
+
+/* ============ TƯƠNG TÁC ============ */
+document.querySelectorAll('[data-screen]').forEach(b=>b.onclick=()=>{ST.screen=b.dataset.screen; ST.active=null; save(); render();});
+$('#backdrop').onclick=()=>{ST.active=null; render(true);};
+$('#screen').addEventListener('click',e=>{
+  const h=e.target.closest('[data-hs]'); if(h) select(h.dataset.hs);
+});
+function wire(){
+  document.querySelectorAll('#panel [data-go]').forEach(b=>b.onclick=()=>select(b.dataset.go));
+  const cs=$('#closeSheet'); if(cs) cs.onclick=()=>{ST.active=null; render(true);};
+  const gp=$('#go-product'); if(gp) gp.onclick=()=>{ST.screen='product'; ST.active=null; save(); render();};
+  // widgets
+  if($('#n-in')){const f=()=>nameCheck(); $('#n-in').oninput=f; f();
+    $('#n-good').onclick=()=>{$('#n-in').value='Sơn nội thất Acrylic Lumi L01 lau chùi được, màu trắng sứ, thùng 18L'; f();};
+    $('#n-bad').onclick=()=>{$('#n-in').value='🔥SƠN NƯỚC GIÁ RẺ NHẤT🔥 freeship toàn quốc, ib 0909123456'; f();};}
+  if($('#d-in')){$('#d-in').oninput=descCheck; descCheck();}
+  if($('#c-list')){['c-list','c-km','c-combo','c-vou','c-fee','c-cost'].forEach(i=>$('#'+i).oninput=calc); calc();}
+  if($('#v-len')){['v-len','v-mb','v-px','v-fmt'].forEach(i=>$('#'+i).oninput=vidCheck); vidCheck();}
+}
+const RX={emoji:/\p{Extended_Pictographic}/u, sym:/[}{~$^<>!*#@;%]/, phone:/(\+?84|0)[\s.\-]?\d{2,3}[\s.\-]?\d{3}[\s.\-]?\d{3,4}|\b\d{9,11}\b/, link:/(https?:\/\/|www\.|bit\.ly|\.com\b|\.vn\b|zalo|facebook|fb\.)/i,
+  ad:/(giá rẻ|rẻ nhất|bán chạy|nóng bỏng|giảm giá|freeship|free ship|miễn phí vận chuyển|siêu sale|\bsale\b|khuyến mãi|\bhot\b)/i, price:/\d+\s?(k\b|đ|vnđ|\.000)/i,
+  fake:/(fake|nhái|replica|like auth|rep 1:1|super ?fake)/i, plat:/(lazada|tiki|sendo|tiktok ?shop)/i};
+function li(cls,ico,t){return `<li class="${cls}"><b>${ico}</b><span>${t}</span></li>`}
+function nameCheck(){
+  const v=$('#n-in').value.trim(); const out=[]; const len=[...v].length;
+  out.push(len<=120?li('ok','✓',`Độ dài ${len}/120 ký tự`):li('no','✕',`Quá dài: ${len}/120 ký tự`));
+  const letters=v.replace(/[^\p{L}]/gu,''); const up=letters.replace(/[^\p{Lu}]/gu,'').length;
+  out.push(letters.length>8&&up/letters.length>.6?li('no','✕','Đang viết hoa gần như toàn bộ'):li('ok','✓','Không viết hoa toàn bộ'));
+  out.push(RX.emoji.test(v)||RX.sym.test(v)?li('no','✕','Có emoji hoặc ký hiệu bị cấm'):li('ok','✓','Không có emoji, ký hiệu cấm'));
+  out.push(RX.ad.test(v)||RX.price.test(v)?li('no','✕','Có thông điệp quảng cáo, đánh giá chủ quan hoặc giá'):li('ok','✓','Không có thông điệp quảng cáo'));
+  out.push(RX.phone.test(v)||RX.link.test(v)||RX.plat.test(v)?li('no','✕','Có SĐT, link hoặc tên sàn khác (dễ bị ẩn)'):li('ok','✓','Không có SĐT, link, tên sàn khác'));
+  out.push(RX.fake.test(v)?li('no','✕','Có từ khóa fake/nhái'):li('ok','✓','Không có từ khóa fake/nhái'));
+  $('#n-out').innerHTML=out.join('');
+  const chars=[...v]; const cut=chars.slice(0,38).join('');
+  $('#n-prev').innerHTML=`Trên điện thoại khách thường chỉ thấy: <mark>${esc(cut)}</mark>${chars.length>38?'…':''}<br><span style="color:var(--muted);font-size:12px">Từ khóa chính đã nằm trong phần này chưa?</span>`;
+}
+function descCheck(){
+  const v=$('#d-in').value; const n=[...v].length; const tags=(v.match(/#[\p{L}\p{N}_]+/gu)||[]); const out=[];
+  out.push(n>3000?li('no','✕',`${n.toLocaleString('vi-VN')} ký tự: vượt giới hạn 3.000`):n>=2000?li('ok','✓',`${n.toLocaleString('vi-VN')} ký tự: đạt khoảng 2.000-3.000`):li('warn','!',`${n.toLocaleString('vi-VN')} ký tự: nên viết thêm đến 2.000-3.000`));
+  const secs=[['giới thiệu','Giới thiệu khái quát'],['ưu điểm','Ưu điểm nổi bật'],['thông số','Thông số kỹ thuật'],['hướng dẫn','Hướng dẫn sử dụng']];
+  const miss=secs.filter(s=>!v.toLowerCase().includes(s[0])).map(s=>s[1]);
+  out.push(miss.length?li('warn','!','Thiếu phần: '+miss.join(', ')):li('ok','✓','Đủ 4 phần nội dung'));
+  out.push(tags.length>18?li('no','✕',`${tags.length} hashtag: vượt tối đa 18`):li('ok','✓',`${tags.length}/18 hashtag`));
+  out.push(tags.some(t=>RX.fake.test(t))?li('no','✕','Hashtag chứa từ khóa fake/nhái'):li('ok','✓','Hashtag không có fake/nhái'));
+  out.push(RX.phone.test(v)||RX.link.test(v)||RX.plat.test(v)?li('no','✕','Có SĐT, link hoặc tên sàn khác (dễ bị ẩn)'):li('ok','✓','Không có SĐT, link, tên sàn khác'));
+  $('#d-out').innerHTML=out.join('');
+}
+function vidCheck(){
+  const l=+$('#v-len').value, mb=+$('#v-mb').value, px=+$('#v-px').value, f=$('#v-fmt').value.trim().toLowerCase().replace('.','');
+  $('#v-out').innerHTML=[ l>=10&&l<=60?li('ok','✓',`Độ dài ${l}s (10-60s)`):li('no','✕',`Độ dài ${l}s: phải từ 10 đến 60 giây`),
+   mb<=30?li('ok','✓',`${mb}MB (tối đa 30MB)`):li('no','✕',`${mb}MB: vượt 30MB`),
+   px<=1280?li('ok','✓',`${px}px (không quá 1280px)`):li('no','✕',`${px}px: vượt 1280×1280`),
+   f==='mp4'?li('ok','✓','Định dạng MP4'):li('no','✕',`Định dạng ${esc(f||'?').toUpperCase()}: phải là MP4`)].join('');
+}
+function calc(){
+  const g=id=>Math.max(0,+$('#'+id).value||0);
+  const list=g('c-list'), km=g('c-km'), combo=g('c-combo'), vou=g('c-vou'), fee=g('c-fee'), cost=g('c-cost');
+  const a=list*(1-km/100), b=a*(1-combo/100), pay=Math.max(0,b-vou), feeV=pay*fee/100, net=pay-feeV, profit=net-cost;
+  const max=Math.max(list,cost,1);
+  const rows=[['Giá gốc',list,'#C9BDB8'],['Sau giá KM',a,'#F7B7A6'],['Sau combo/deal',b,'#F39A80'],['Khách trả',pay,'#EE4D2D'],['Thực nhận',net,profit>=0?'#137A4C':'#B42318'],['Giá vốn',cost,'#24191B']];
+  $('#c-wf').innerHTML=rows.map(r=>`<div class="r"><span>${r[0]}</span><span class="tr"><i style="width:${Math.min(100,r[1]/max*100)}%;background:${r[2]}"></i></span><span class="v">${fmt(r[1])}</span></div>`).join('')+
+   `<div class="r" style="color:var(--muted)"><span>Phí sàn</span><span></span><span class="v">−${fmt(feeV)}</span></div>`;
+  const m=pay?profit/pay*100:0;
+  $('#c-verdict').innerHTML=profit>=0?`<div class="verdict good">Lãi ${fmt(profit)}/sản phẩm · biên ${m.toFixed(1)}% trên giá khách trả</div>`:`<div class="verdict bad">Lỗ ${fmt(-profit)}/sản phẩm. Giảm bớt một lớp ưu đãi trước khi chạy.</div>`;
+}
+addEventListener('keydown',e=>{if(e.key==='Escape'&&ST.active){ST.active=null;render(true);}});
+addEventListener('resize',()=>document.body.classList.toggle('sheet',!!ST.active&&matchMedia('(max-width:899px)').matches));
+render();
+</script>
+
+</body></html>
