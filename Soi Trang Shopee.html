@@ -1,8 +1,18 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Soi Trang Shopee</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Soi Trang Shopee</title>
+  <meta name="description" content="Checklist và công cụ soi trang sản phẩm, trang shop Shopee theo quy định và tối ưu hiển thị của Digital Lab.">
+  <meta property="og:title" content="Soi Trang Shopee">
+  <meta property="og:description" content="Checklist và công cụ soi trang sản phẩm, trang shop Shopee theo quy định và tối ưu hiển thị của Digital Lab.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+  <style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+</head>
+<body>
 <style>
 /* Layout: phone mockup on the left (the thing students already know), knowledge panel on the right; bottom sheet on phones. Single light theme by choice (white, as the course materials). */
 :root{
@@ -247,7 +257,6 @@ product:{ label:'Trang sản phẩm', hotspots:[
     {x:'Độ dài từ 10 đến 60 giây'},
     {x:'Định dạng MP4'},
     {x:'Không dùng hình ảnh, video có nội dung phân biệt đối xử, dung tục, bạo lực'}]}],
-  widget:'video',
   ex:{bad:'Quay một mạch 3 phút 12 giây bằng điện thoại, file .MOV nặng 85MB.', good:'Video MP4 30 giây: mở nắp, khuấy, lăn sơn, tường hoàn thiện. Gọn trong 20MB.'}},
  {id:'anh-thanh-phan', name:'Ảnh thành phần', short:'8 ảnh phía sau ảnh đại diện. Đây là chỗ thuyết phục khách tin và mua.', phase:1,
   groups:[
@@ -279,7 +288,6 @@ product:{ label:'Trang sản phẩm', hotspots:[
     {x:'Không nhồi nhét từ khóa'},
     {x:'Thử nghiệm từ khóa ngách (từ khóa dài, mở rộng)', n:'Ví dụ: Kem trị mụn → Kem trị mụn cho da nhờn'},
     {x:'Tránh đặt tên y hệt sản phẩm của đối thủ cạnh tranh'}]}],
-  widget:'name',
   ex:{bad:'🔥SƠN NƯỚC GIÁ RẺ NHẤT🔥 freeship toàn quốc, ib 0909xxx', good:'Sơn nội thất Acrylic Lumi L01 lau chùi được, màu trắng sứ, thùng 18L'}},
  {id:'gia-ban', name:'Giá bán (giá ưu đãi)', short:'Giá gạch ngang và giá ưu đãi đến từ cài đặt "Khuyến mãi của shop".', phase:1,
   groups:[
@@ -287,7 +295,6 @@ product:{ label:'Trang sản phẩm', hotspots:[
     {x:'Cài đặt Khuyến mãi của shop (giá KM) để hiển thị giá ưu đãi bên cạnh giá gốc gạch ngang'}]},
    {k:'rule', t:'Bắt buộc kiểm tra', items:[
     {x:'Kiểm tra biên lợi nhuận khi các chương trình cộng dồn', n:'Giá KM, voucher, combo và freeship có thể áp dụng chồng lên nhau. Tính giá thực nhận sau khi trừ toàn bộ ưu đãi và phí sàn để không bán lỗ.'}]}],
-  widget:'calc',
   ex:{bad:'Giảm 40%, thêm voucher 50K, thêm combo. Đơn nào về cũng lỗ mà không ai biết.', good:'Bật chương trình xong thì tính lại giá thực nhận. Còn lãi mới chạy.'}},
  {id:'chuong-trinh', name:'Chương trình marketing', short:'Voucher, combo, deal sốc, flash sale: những thứ khiến khách bấm "Mua ngay" hôm nay thay vì để mai.', phase:1,
   groups:[
@@ -300,7 +307,7 @@ product:{ label:'Trang sản phẩm', hotspots:[
     {x:'Flash Sale của shop', n:'Chọn khung giờ và sản phẩm chủ lực'},
     {x:'Kiểm tra việc mua gói Freeship Extra Plus'}]},
    {k:'rule', t:'Bắt buộc kiểm tra', items:[
-    {x:'Kiểm tra biên lợi nhuận khi các chương trình cộng dồn', n:'Dùng máy tính ở mục Giá bán để tính giá thực nhận'}]}],
+    {x:'Kiểm tra biên lợi nhuận khi các chương trình cộng dồn', n:'Tính giá thực nhận sau khi trừ toàn bộ ưu đãi và phí sàn để không bán lỗ'}]}],
   widget:'stackmkt',
   ex:{bad:'Bật hết mọi loại voucher cho "nhìn cho vui", flash sale chọn sản phẩm ít người tìm.', good:'Voucher người theo dõi để tăng follow, flash sale đặt vào sản phẩm chủ lực và khung giờ đông khách.'}},
  {id:'mo-ta', name:'Nội dung mô tả & hashtag', short:'Phần khách đọc khi đã quan tâm, và là phần giúp thuật toán hiểu shop bán cho ai.', phase:1,
@@ -458,41 +465,14 @@ function widget(w){
     <text x="120" y="116" text-anchor="middle" font-size="15" font-weight="800" fill="#137A4C" font-family="Montserrat">Sản phẩm</text>
     <text x="120" y="134" text-anchor="middle" font-size="11" font-weight="600" fill="#137A4C" font-family="Montserrat">≥ 70% khung</text>
    </svg><p class="hint" style="margin:10px 0 0">1:1 · ≥ 600×600 px · ≤ 2MB · ≥ 72 dpi</p></div>`;
-  if(w==='video') return `<div class="widget"><h3>Kiểm tra nhanh file video</h3><p class="hint">Nhập thông số video của bạn.</p>
-   <div class="grid2"><label class="field">Độ dài (giây)<input id="v-len" type="number" min="0" value="45"></label>
-   <label class="field">Dung lượng (MB)<input id="v-mb" type="number" min="0" value="22"></label>
-   <label class="field">Cạnh dài nhất (px)<input id="v-px" type="number" min="0" value="1280"></label>
-   <label class="field">Định dạng<input id="v-fmt" type="text" value="MP4"></label></div><ul class="checks" id="v-out"></ul></div>`;
   if(w==='slots'){const s=['Ảnh đại diện','Ảnh chương trình','Công trình thực tế','Bảng màu','Feedback khách','Hướng dẫn thi công','Thông số kỹ thuật','Kho hàng','Chứng nhận'];
    return `<div class="widget"><h3>9 ô ảnh, xếp thế nào?</h3><p class="hint">Gợi ý thứ tự cho sản phẩm sơn (tham khảo). Ô gần ảnh đại diện ưu tiên ảnh thực tế hoặc ảnh chương trình.</p>
    <div class="slots">${s.map((t,i)=>`<div class="${i===0?'main':''}"><i>${i===0?'ẢNH 1 · ĐẠI DIỆN':'ẢNH '+(i+1)}</i>${t}</div>`).join('')}</div></div>`;}
-  if(w==='name') return `<div class="widget"><h3>Máy soi tên sản phẩm</h3><p class="hint">Gõ thử tên sản phẩm. Máy sẽ soi các lỗi theo quy định.</p>
-   <div class="formula" style="margin-bottom:12px"><span style="background:#FFEFE9">Loại SP</span><em>+</em><span style="background:#EAF0FA">Thương hiệu</span><em>+</em><span style="background:#FFF6E0">Tên/Mã</span><em>+</em><span style="background:#E6F4EC">Mô tả</span></div>
-   <label class="field">Tên sản phẩm<textarea id="n-in" rows="3">🔥SƠN NƯỚC GIÁ RẺ NHẤT🔥 freeship toàn quốc, ib 0909123456</textarea></label>
-   <div class="preview" id="n-prev"></div><ul class="checks" id="n-out"></ul>
-   <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px"><button class="btn" id="n-good">Thử tên chuẩn</button><button class="btn" id="n-bad">Thử tên lỗi</button></div></div>`;
-  if(w==='calc') return `<div class="widget"><h3>Máy tính giá thực nhận khi cộng dồn ưu đãi</h3><p class="hint">Số liệu mặc định là ví dụ. Nhập phí sàn theo biểu phí ngành hàng hiện tại của shop (gồm phí cố định, phí thanh toán, phí dịch vụ như Freeship Extra).</p>
-   <div class="grid2">
-    <label class="field">Giá gốc (đ)<input id="c-list" type="number" value="1400000"></label>
-    <label class="field">Giảm giá KM của shop (%)<input id="c-km" type="number" value="15"></label>
-    <label class="field">Combo / Deal thêm (%)<input id="c-combo" type="number" value="5"></label>
-    <label class="field">Voucher shop (đ)<input id="c-vou" type="number" value="50000"></label>
-    <label class="field">Tổng phí sàn (%)<input id="c-fee" type="number" value="15"></label>
-    <label class="field">Giá vốn (đ)<input id="c-cost" type="number" value="780000"></label></div>
-   <div class="wf" id="c-wf"></div><div id="c-verdict"></div></div>`;
   if(w==='stackmkt') return `<div class="widget"><h3>Các lớp ưu đãi chồng lên nhau</h3><p class="hint">Khách thấy một mức giá, nhưng shop phải gánh từng lớp bên dưới.</p>
-   <div class="stack"><div>Giá gốc <i>niêm yết</i></div><div>− Khuyến mãi của shop <i>giá KM</i></div><div>− Combo / Mua kèm deal sốc <i>linh hoạt</i></div><div>− Flash Sale <i>khung giờ chủ lực</i></div><div>− Voucher shop / bạn mới / người theo dõi <i>cộng thêm</i></div><div>− Phí sàn, Freeship Extra <i>trừ khi đối soát</i></div><div class="hl">= Giá thực nhận <i>phải > giá vốn</i></div></div>
-   <div style="margin-top:12px"><button class="btn" data-go="gia-ban">Mở máy tính giá ở mục Giá bán →</button></div></div>`;
+   <div class="stack"><div>Giá gốc <i>niêm yết</i></div><div>− Khuyến mãi của shop <i>giá KM</i></div><div>− Combo / Mua kèm deal sốc <i>linh hoạt</i></div><div>− Flash Sale <i>khung giờ chủ lực</i></div><div>− Voucher shop / bạn mới / người theo dõi <i>cộng thêm</i></div><div>− Phí sàn, Freeship Extra <i>trừ khi đối soát</i></div><div class="hl">= Giá thực nhận <i>phải > giá vốn</i></div></div></div>`;
   if(w==='desc') return `<div class="widget"><h3>Khung mô tả chuẩn</h3><p class="hint">Đọc từ trên xuống, giống khách lướt.</p>
-   <div class="stack" style="margin-bottom:14px"><div class="hl">Tiêu đề sản phẩm <i>dòng đầu tiên</i></div><div>1. Giới thiệu khái quát <i>cho ai, bối cảnh dùng</i></div><div>2. Ưu điểm nổi bật <i>lặp từ khóa</i></div><div>3. Thông số kỹ thuật <i>số lượng cụ thể</i></div><div>4. Hướng dẫn sử dụng</div><div>Hashtag <i>≤ 18, đúng chủ đề</i></div></div>
-   <h3>Máy soi mô tả</h3><p class="hint">Dán mô tả của bạn vào đây.</p>
-   <label class="field">Nội dung mô tả<textarea id="d-in" rows="6">Sơn nội thất Acrylic Lumi L01 lau chùi được, thùng 18L
-GIỚI THIỆU KHÁI QUÁT: Sơn nội thất cho phòng khách, phòng ngủ, phòng trẻ em...
-ƯU ĐIỂM NỔI BẬT: Lau chùi được, ít mùi...
-THÔNG SỐ KỸ THUẬT: Thùng 18L, phủ 120-140 m2/2 lớp
-HƯỚNG DẪN SỬ DỤNG: Sơn 1 lớp lót, 2 lớp phủ
-#sonnoithat #sonacrylic #sonlauchui</textarea></label><ul class="checks" id="d-out"></ul></div>`;
-  if(w==='brand') return `<div class="widget"><h3>Soi theo brand guideline</h3><p class="hint">Cầm brand guideline, đối chiếu 4 thứ trên trang shop.</p>
+   <div class="stack"><div class="hl">Tiêu đề sản phẩm <i>dòng đầu tiên</i></div><div>1. Giới thiệu khái quát <i>cho ai, bối cảnh dùng</i></div><div>2. Ưu điểm nổi bật <i>lặp từ khóa</i></div><div>3. Thông số kỹ thuật <i>số lượng cụ thể</i></div><div>4. Hướng dẫn sử dụng</div><div>Hashtag <i>≤ 18, đúng chủ đề</i></div></div></div>`;
+  if(w==='brand') return `<div class="widget"><h3>Đối chiếu brand guideline</h3><p class="hint">Cầm brand guideline, đối chiếu 4 yếu tố trên trang shop.</p>
    <div class="stack"><div>Logo <i>avatar shop, mép trên ảnh SP</i></div><div>Màu chủ đạo <i>ảnh bìa, banner</i></div><div>Font chữ <i>chữ trên banner, ảnh</i></div><div>Phong cách ảnh <i>đồng bộ giữa các sản phẩm</i></div></div></div>`;
   if(w==='toProduct') return `<div class="widget"><h3>Danh mục xong, đến lượt từng sản phẩm</h3><p class="hint">Mỗi sản phẩm trong danh mục cần qua checklist ở màn hình Trang sản phẩm.</p><button class="btn pri" id="go-product">Mở Trang sản phẩm →</button></div>`;
   if(w==='phase') return `<div class="widget"><h3>Thứ tự triển khai</h3><p class="hint">Kéo khách vào một shop chưa tối ưu thì tốn tiền mà không ra đơn.</p>
@@ -563,59 +543,6 @@ function wire(){
   document.querySelectorAll('#panel [data-go]').forEach(b=>b.onclick=()=>select(b.dataset.go));
   const cs=$('#closeSheet'); if(cs) cs.onclick=()=>{ST.active=null; render(true);};
   const gp=$('#go-product'); if(gp) gp.onclick=()=>{ST.screen='product'; ST.active=null; save(); render();};
-  // widgets
-  if($('#n-in')){const f=()=>nameCheck(); $('#n-in').oninput=f; f();
-    $('#n-good').onclick=()=>{$('#n-in').value='Sơn nội thất Acrylic Lumi L01 lau chùi được, màu trắng sứ, thùng 18L'; f();};
-    $('#n-bad').onclick=()=>{$('#n-in').value='🔥SƠN NƯỚC GIÁ RẺ NHẤT🔥 freeship toàn quốc, ib 0909123456'; f();};}
-  if($('#d-in')){$('#d-in').oninput=descCheck; descCheck();}
-  if($('#c-list')){['c-list','c-km','c-combo','c-vou','c-fee','c-cost'].forEach(i=>$('#'+i).oninput=calc); calc();}
-  if($('#v-len')){['v-len','v-mb','v-px','v-fmt'].forEach(i=>$('#'+i).oninput=vidCheck); vidCheck();}
-}
-const RX={emoji:/\p{Extended_Pictographic}/u, sym:/[}{~$^<>!*#@;%]/, phone:/(\+?84|0)[\s.\-]?\d{2,3}[\s.\-]?\d{3}[\s.\-]?\d{3,4}|\b\d{9,11}\b/, link:/(https?:\/\/|www\.|bit\.ly|\.com\b|\.vn\b|zalo|facebook|fb\.)/i,
-  ad:/(giá rẻ|rẻ nhất|bán chạy|nóng bỏng|giảm giá|freeship|free ship|miễn phí vận chuyển|siêu sale|\bsale\b|khuyến mãi|\bhot\b)/i, price:/\d+\s?(k\b|đ|vnđ|\.000)/i,
-  fake:/(fake|nhái|replica|like auth|rep 1:1|super ?fake)/i, plat:/(lazada|tiki|sendo|tiktok ?shop)/i};
-function li(cls,ico,t){return `<li class="${cls}"><b>${ico}</b><span>${t}</span></li>`}
-function nameCheck(){
-  const v=$('#n-in').value.trim(); const out=[]; const len=[...v].length;
-  out.push(len<=120?li('ok','✓',`Độ dài ${len}/120 ký tự`):li('no','✕',`Quá dài: ${len}/120 ký tự`));
-  const letters=v.replace(/[^\p{L}]/gu,''); const up=letters.replace(/[^\p{Lu}]/gu,'').length;
-  out.push(letters.length>8&&up/letters.length>.6?li('no','✕','Đang viết hoa gần như toàn bộ'):li('ok','✓','Không viết hoa toàn bộ'));
-  out.push(RX.emoji.test(v)||RX.sym.test(v)?li('no','✕','Có emoji hoặc ký hiệu bị cấm'):li('ok','✓','Không có emoji, ký hiệu cấm'));
-  out.push(RX.ad.test(v)||RX.price.test(v)?li('no','✕','Có thông điệp quảng cáo, đánh giá chủ quan hoặc giá'):li('ok','✓','Không có thông điệp quảng cáo'));
-  out.push(RX.phone.test(v)||RX.link.test(v)||RX.plat.test(v)?li('no','✕','Có SĐT, link hoặc tên sàn khác (dễ bị ẩn)'):li('ok','✓','Không có SĐT, link, tên sàn khác'));
-  out.push(RX.fake.test(v)?li('no','✕','Có từ khóa fake/nhái'):li('ok','✓','Không có từ khóa fake/nhái'));
-  $('#n-out').innerHTML=out.join('');
-  const chars=[...v]; const cut=chars.slice(0,38).join('');
-  $('#n-prev').innerHTML=`Trên điện thoại khách thường chỉ thấy: <mark>${esc(cut)}</mark>${chars.length>38?'…':''}<br><span style="color:var(--muted);font-size:12px">Từ khóa chính đã nằm trong phần này chưa?</span>`;
-}
-function descCheck(){
-  const v=$('#d-in').value; const n=[...v].length; const tags=(v.match(/#[\p{L}\p{N}_]+/gu)||[]); const out=[];
-  out.push(n>3000?li('no','✕',`${n.toLocaleString('vi-VN')} ký tự: vượt giới hạn 3.000`):n>=2000?li('ok','✓',`${n.toLocaleString('vi-VN')} ký tự: đạt khoảng 2.000-3.000`):li('warn','!',`${n.toLocaleString('vi-VN')} ký tự: nên viết thêm đến 2.000-3.000`));
-  const secs=[['giới thiệu','Giới thiệu khái quát'],['ưu điểm','Ưu điểm nổi bật'],['thông số','Thông số kỹ thuật'],['hướng dẫn','Hướng dẫn sử dụng']];
-  const miss=secs.filter(s=>!v.toLowerCase().includes(s[0])).map(s=>s[1]);
-  out.push(miss.length?li('warn','!','Thiếu phần: '+miss.join(', ')):li('ok','✓','Đủ 4 phần nội dung'));
-  out.push(tags.length>18?li('no','✕',`${tags.length} hashtag: vượt tối đa 18`):li('ok','✓',`${tags.length}/18 hashtag`));
-  out.push(tags.some(t=>RX.fake.test(t))?li('no','✕','Hashtag chứa từ khóa fake/nhái'):li('ok','✓','Hashtag không có fake/nhái'));
-  out.push(RX.phone.test(v)||RX.link.test(v)||RX.plat.test(v)?li('no','✕','Có SĐT, link hoặc tên sàn khác (dễ bị ẩn)'):li('ok','✓','Không có SĐT, link, tên sàn khác'));
-  $('#d-out').innerHTML=out.join('');
-}
-function vidCheck(){
-  const l=+$('#v-len').value, mb=+$('#v-mb').value, px=+$('#v-px').value, f=$('#v-fmt').value.trim().toLowerCase().replace('.','');
-  $('#v-out').innerHTML=[ l>=10&&l<=60?li('ok','✓',`Độ dài ${l}s (10-60s)`):li('no','✕',`Độ dài ${l}s: phải từ 10 đến 60 giây`),
-   mb<=30?li('ok','✓',`${mb}MB (tối đa 30MB)`):li('no','✕',`${mb}MB: vượt 30MB`),
-   px<=1280?li('ok','✓',`${px}px (không quá 1280px)`):li('no','✕',`${px}px: vượt 1280×1280`),
-   f==='mp4'?li('ok','✓','Định dạng MP4'):li('no','✕',`Định dạng ${esc(f||'?').toUpperCase()}: phải là MP4`)].join('');
-}
-function calc(){
-  const g=id=>Math.max(0,+$('#'+id).value||0);
-  const list=g('c-list'), km=g('c-km'), combo=g('c-combo'), vou=g('c-vou'), fee=g('c-fee'), cost=g('c-cost');
-  const a=list*(1-km/100), b=a*(1-combo/100), pay=Math.max(0,b-vou), feeV=pay*fee/100, net=pay-feeV, profit=net-cost;
-  const max=Math.max(list,cost,1);
-  const rows=[['Giá gốc',list,'#C9BDB8'],['Sau giá KM',a,'#F7B7A6'],['Sau combo/deal',b,'#F39A80'],['Khách trả',pay,'#EE4D2D'],['Thực nhận',net,profit>=0?'#137A4C':'#B42318'],['Giá vốn',cost,'#24191B']];
-  $('#c-wf').innerHTML=rows.map(r=>`<div class="r"><span>${r[0]}</span><span class="tr"><i style="width:${Math.min(100,r[1]/max*100)}%;background:${r[2]}"></i></span><span class="v">${fmt(r[1])}</span></div>`).join('')+
-   `<div class="r" style="color:var(--muted)"><span>Phí sàn</span><span></span><span class="v">−${fmt(feeV)}</span></div>`;
-  const m=pay?profit/pay*100:0;
-  $('#c-verdict').innerHTML=profit>=0?`<div class="verdict good">Lãi ${fmt(profit)}/sản phẩm · biên ${m.toFixed(1)}% trên giá khách trả</div>`:`<div class="verdict bad">Lỗ ${fmt(-profit)}/sản phẩm. Giảm bớt một lớp ưu đãi trước khi chạy.</div>`;
 }
 addEventListener('keydown',e=>{if(e.key==='Escape'&&ST.active){ST.active=null;render(true);}});
 addEventListener('resize',()=>document.body.classList.toggle('sheet',!!ST.active&&matchMedia('(max-width:899px)').matches));
